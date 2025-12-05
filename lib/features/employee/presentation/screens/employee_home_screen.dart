@@ -1,9 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:employee_management/core/constant/app_color.dart';
-import 'package:employee_management/features/employee/presentation/screens/add_employee_screen.dart';
 import 'package:flutter/material.dart';
 
-@RoutePage()
+import 'add_employee_screen.dart';
+
 class EmployeeHomeScreen extends StatelessWidget {
   const EmployeeHomeScreen({super.key});
 
@@ -62,10 +61,10 @@ class EmployeeHomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   // MaterialPageRoute(builder: (_) => AddEmployeeScreen()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => AddEmployeeScreen()),
+          );
         },
         child: Text("Add"),
       ),
