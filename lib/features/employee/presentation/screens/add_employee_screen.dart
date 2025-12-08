@@ -1,3 +1,4 @@
+import 'package:employee_management/core/constant/app_color.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widget/aa_textfield.dart';
@@ -34,7 +35,11 @@ class AddEmployeeScreen extends StatelessWidget {
               ),
               SizedBox(height: 40),
 
-              AppButton(),
+              AppButton(
+                width: null,
+                title: 'Save',
+                backGroundColor: AppColors.primary,
+              ),
             ],
           ),
         ),

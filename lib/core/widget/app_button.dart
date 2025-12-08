@@ -3,16 +3,27 @@ import 'package:flutter/material.dart';
 import '../constant/app_color.dart';
 
 class AppButton extends StatelessWidget {
-  const AppButton({super.key});
+  const AppButton({
+    super.key,
+    this.height = 55,
+    required this.width,
+    required this.title,
+    required this.backGroundColor,
+  });
+
+  final double height;
+  final double? width;
+  final String title;
+  final Color backGroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 55,
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        color: AppColors.primary,
+        color: backGroundColor,
       ),
       child: ElevatedButton(
         onPressed: () {},
@@ -26,7 +37,7 @@ class AppButton extends StatelessWidget {
           padding: EdgeInsets.zero,
         ),
         child: Text(
-          "Save",
+          title,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,

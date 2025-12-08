@@ -1,4 +1,5 @@
 import 'package:employee_management/core/constant/app_color.dart';
+import 'package:employee_management/features/employee/presentation/screens/employee_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'add_employee_screen.dart';
@@ -86,13 +87,22 @@ class AllEmployee extends StatelessWidget {
           margin: .symmetric(vertical: 8, horizontal: 5),
           color: AppColors.textWhite,
           shape: RoundedRectangleBorder(borderRadius: .circular(12)),
-          child: ListTile(
-            leading: CircleAvatar(),
-            title: Text("Name"),
-            subtitle: Text("id"),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.delete, color: AppColors.primaryRed),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => EmployeeDetailScreen()),
+              );
+            },
+
+            child: ListTile(
+              leading: CircleAvatar(),
+              title: Text("Name"),
+              subtitle: Text("id"),
+              trailing: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.delete, color: AppColors.primaryRed),
+              ),
             ),
           ),
         );
