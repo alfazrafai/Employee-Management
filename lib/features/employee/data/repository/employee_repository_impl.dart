@@ -12,7 +12,7 @@ class EmployeeRepositoryImpl implements EmployeeRepository {
   Future<List<EmployeeEntity>> getEmployees() => dataSource.getAllEmployees();
 
   @override
-  Future<void> createEmployee(EmployeeEntity employee) {
+  Future<EmployeeEntity> createEmployee(EmployeeEntity employee) {
     return dataSource.createUser(
       EmployeeModel(
         id: employee.id,

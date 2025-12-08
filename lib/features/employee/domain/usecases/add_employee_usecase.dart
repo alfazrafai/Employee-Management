@@ -6,6 +6,7 @@ class AddEmployeeUseCase {
 
   AddEmployeeUseCase(this.repository);
 
-  Future<void> call(EmployeeEntity employee) =>
-      repository.createEmployee(employee);
+  Future<EmployeeEntity> call(EmployeeEntity employee) {
+    return repository.createEmployee(employee);
+  }
 }

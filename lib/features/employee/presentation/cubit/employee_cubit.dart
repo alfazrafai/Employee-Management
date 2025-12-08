@@ -23,15 +23,15 @@ class EmployeeCubit extends Cubit<EmployeeState> {
   final UpdateEmployeeUseCase updateEmployeeUseCase;
   final DeleteEmployeeUseCase deleteEmployeeUseCase;
 
-  List<EmployeeEntity> employee = [];
+  List<EmployeeEntity> employees = [];
 
   Future<void> fetchEmployee() async {
     emit(EmployeeLoading());
     try {
-      employee = await getAllEmployeeUseCase();
-      emit(EmployeeLoaded(employee));
-    } catch (e) {
-      emit(EmployeeError("Something went to wrong"));
+      employees = await getAllEmployeeUseCase();
+      emit(EmployeeLoaded(employees));
+    } catch (_) {
+      emit(EmployeeError("Something went wrong"));
     }
   }
 
@@ -40,23 +40,27 @@ class EmployeeCubit extends Cubit<EmployeeState> {
     try {
       final result = await getEmployeeByIdUseCase(id);
       emit(EmployeeDetailLoaded(result));
-    } catch (e) {
+    } catch (_) {
       emit(EmployeeError("Failed to load employee detail"));
     }
   }
 
-  Future<void> addEmployee(EmployeeEntity employee) async {
-    await addEmployeeUseCase(employee);
-    fetchEmployee();
+  Future<void> addEmployee(EmployeeEntity emp) async {
+    final created = await addEmployeeUseCase(emp);
+    employees.add(created);
+    emit(EmployeeLoaded(employees));
   }
 
-  Future<void> updateEmployee(int id, EmployeeEntity employee) async {
-    await updateEmployeeUseCase(id, employee);
-    fetchEmployee();
+  Future<void> updateEmployee(int id, EmployeeEntity emp) async {
+    await updateEmployeeUseCase(id, emp);
+    final index = employees.indexWhere((e) => e.id == id);
+    employees[index] = emp;
+    emit(EmployeeLoaded(employees));
   }
 
   Future<void> deleteEmployee(int id) async {
     await deleteEmployeeUseCase(id);
-    fetchEmployee();
+    employees.removeWhere((e) => e.id == id);
+    emit(EmployeeLoaded(employees));
   }
 }

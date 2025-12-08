@@ -5,7 +5,7 @@ abstract class EmployeeRepository {
 
   Future<EmployeeEntity> getEmployeeById(int id);
 
-  Future<void> createEmployee(EmployeeEntity employee);
+  Future<EmployeeEntity> createEmployee(EmployeeEntity employee);
 
   Future<void> updateEmployee(int id, EmployeeEntity employee);
 
