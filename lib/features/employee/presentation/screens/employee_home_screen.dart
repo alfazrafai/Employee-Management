@@ -96,7 +96,20 @@ class _EmployeeHomeScreenState extends State<EmployeeHomeScreen> {
                         },
                       );
                     }
-                    return Center(child: Text("No employees found"));
+                    return Center(
+                      child: Column(
+                        children: [
+                          Text("No employees found"),
+                          SizedBox(height: 20),
+                          TextButton(
+                            onPressed: () {
+                              context.read<EmployeeCubit>().fetchEmployee();
+                            },
+                            child: Text("Retry"),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                 ),
               ),

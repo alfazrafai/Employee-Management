@@ -39,7 +39,7 @@ class CustomTextField extends StatelessWidget {
           },
       decoration: InputDecoration(
         hintText: hint,
-        counterText: "", // Hide counter text when using maxLength
+        counterText: "",
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 16,

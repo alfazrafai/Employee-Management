@@ -13,7 +13,7 @@ class EmployeeRemoteDataSource {
         validateStatus: (status) => status! < 500,
       ),
     );
-    dio.interceptors.add(DioLogger()); // 👈 Add interceptor
+    dio.interceptors.add(DioLogger());
   }
 
   Future<List<EmployeeModel>> getAllEmployees() async {

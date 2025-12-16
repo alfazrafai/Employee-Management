@@ -13,12 +13,7 @@ class ProfileImage extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Center(
-            child: CircleAvatar(
-              radius: 60,
-              // backgroundImage: AssetImage("assets/profile.jpg"),
-            ),
-          ),
+          Center(child: CircleAvatar(radius: 60)),
 
           Positioned(
             bottom: 20,
